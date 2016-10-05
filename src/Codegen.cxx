@@ -38,8 +38,10 @@ Codegen::Codegen(const float* pcm, unsigned int numSamples, int start_offset) {
     Fingerprint *pFingerprint = new Fingerprint(pSubbandAnalysis, start_offset);
     pFingerprint->Compute();
 
-    _CodeString = createCodeString(pFingerprint->getCodes());
-    _NumCodes = pFingerprint->getCodes().size();
+    codes = pFingerprint->getCodes();
+    
+    /*_CodeString = createCodeString(pFingerprint->getCodes());
+    _NumCodes = pFingerprint->getCodes().size();*/
 
     delete pFingerprint;
     delete pSubbandAnalysis;
@@ -53,14 +55,15 @@ string Codegen::createCodeString(vector<FPCode> vCodes) {
     }
     std::ostringstream codestream;
     codestream << std::setfill('0') << std::hex;
-    for (uint i = 0; i < vCodes.size(); i++)
+    mfor (uint i = 0; i < vCodes.size(); i++)
         codestream << std::setw(5) << vCodes[i].frame;
 
     for (uint i = 0; i < vCodes.size(); i++) {
         int hash = vCodes[i].code;
         codestream << std::setw(5) << hash;
     }
-    return compress(codestream.str());
+    return codestream.str();
+    //return compress(codestream.str());
 }
 
 

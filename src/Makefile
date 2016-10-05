@@ -73,6 +73,11 @@ install: all
 	install ../echoprint-codegen $(DESTDIR)$(BINDIR)
 	install -d $(DESTDIR)$(INCLUDEDIR)/echoprint
 	install -pm 644 Codegen.h $(DESTDIR)$(INCLUDEDIR)/echoprint/
+	install -pm 644 Fingerprint.h $(DESTDIR)$(INCLUDEDIR)/echoprint/
+	install -pm 644 Common.h $(DESTDIR)$(INCLUDEDIR)/echoprint/
+	install -pm 644 SubbandAnalysis.h $(DESTDIR)$(INCLUDEDIR)/echoprint/
+	install -pm 644 Params.h $(DESTDIR)$(INCLUDEDIR)/echoprint/
+	install -pm 644 MatrixUtility.h $(DESTDIR)$(INCLUDEDIR)/echoprint/
 	mkdir -p $(DESTDIR)$(LIBDIR)
 ifeq ($(UNAME),Darwin)
 	install -m 755 libcodegen.$(VERSION).dylib $(DESTDIR)$(LIBDIR)
